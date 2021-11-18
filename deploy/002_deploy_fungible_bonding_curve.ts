@@ -11,7 +11,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   await deploy('FungibleBondingCurve', {
     from: deployer,
     proxy: useProxy && 'postUpgrade',
-    args: [],
+    args: [1, 100], // 1% => steps
     log: true,
     autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
   });
