@@ -8,10 +8,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   // proxy only in non-live network (localhost and hardhat network) enabling HCR (Hot Contract Replacement)
   // in live network, proxy is disabled and constructor is invoked
-  await deploy('GreetingsRegistry', {
+  await deploy('FungibleBondingCurve', {
     from: deployer,
     proxy: useProxy && 'postUpgrade',
-    args: [2],
+    args: [],
     log: true,
     autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
   });
@@ -19,5 +19,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   return !useProxy; // when live network, record the script as executed to prevent rexecution
 };
 export default func;
-func.id = 'deploy_greetings_registry'; // id required to prevent reexecution
-func.tags = ['GreetingsRegistry'];
+func.id = 'FungibleBondingCurve_deploy'; // id required to prevent reexecution
+func.tags = ['FungibleBondingCurve', 'FungibleBondingCurve_deploy'];
